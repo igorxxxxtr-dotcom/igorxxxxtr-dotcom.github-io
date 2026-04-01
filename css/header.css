@@ -1,0 +1,22 @@
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    margin-left: 15px;
+}
+.header {
+    background: url(../images/bg.jpg) center/cover no-repeat;
+    padding: 20px 0;
+}
+
+.logo {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.brand-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}

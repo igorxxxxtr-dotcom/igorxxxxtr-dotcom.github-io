@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    background: url('../images/banner.jpg') center/cover no-repeat;
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.activity-card {
+    padding: 20px;
+}

@@ -1,0 +1,152 @@
+/* TOP BAR */
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('..//fonts/RobotoSlab.ttf');
+}
+
+body {
+    font-family: 'Roboto Slab';
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+    color: #333;
+}
+
+/* ФИРМЕННЫЙ ЗЕЛЁНЫЙ */
+:root {
+    --green: #2e7d32;
+    --light-green: #4caf50;
+
+}
+/* HEADER */
+.header {
+    background: url("..//images/bg.jpg") center/cover no-repeat;
+    height: 300px;
+}
+
+.overlay {
+    background: rgba(255,255,255,0.85);
+    height: 100%;
+    padding: 20px 40px;
+}
+
+/* LOGO */
+.logo {
+    width: 220px;
+}
+
+/* NAV */
+nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--green);
+}
+
+/* SEARCH */
+.search {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* БАННЕР С ПОМИДОРАМИ */
+.tomato-banner img {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* КОНТЕЙНЕР */
+.container {
+    padding: 40px;
+}
+
+/* КНОПКА НАЗАД */
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: gray;
+    text-decoration: none;
+}
+
+/* ЗАГОЛОВОК */
+.title-block {
+    text-align: left;
+}
+
+.red-logo {
+    width: 200px;
+    margin: 10px 0;
+}
+
+.subtitle {
+    color: gray;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+/* GRID */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.main-img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* PDF */
+.pdf {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.pdf img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+/* FOOTER */
+.footer-top {
+    background: #444;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-top a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    background: #222;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+}
+
+.socials img {
+    height: 25px;
+    margin: 5px;
+}

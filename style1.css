@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.container {
+    width: 1100px;
+    margin: auto;
+}
+
+/* HEADER */
+.header-tomato {
+    background: url('..//images/tomatofon.png') center/cover no-repeat;
+    color: white;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.logo {
+    height: 50px;
+}
+
+.menu a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.menu .active {
+    border-bottom: 2px solid white;
+}
+
+.search input {
+    padding: 6px 10px;
+    border: none;
+}
+
+/* HEADER TEXT */
+.header-content {
+    padding: 60px 0 80px;
+}
+
+.header-content h1 {
+    font-size: 32px;
+    width: 500px;
+}
+
+/* INFO */
+.info {
+    padding: 60px 0;
+}
+
+.info-wrap {
+    display: flex;
+    gap: 30px;
+}
+
+.info-line {
+    width: 5px;
+    background: red;
+}
+
+.info-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* GRID */
+.tomatoes {
+    padding-bottom: 60px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 160px;
+}
+
+.item span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.footer-top {
+    background: #444;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-top a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    background: #222;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+}
+
+.socials img {
+    height: 25px;
+    margin: 5px;
+}

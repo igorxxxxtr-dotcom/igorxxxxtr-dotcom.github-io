@@ -1,0 +1,88 @@
+/* ===== 1600px ===== */
+@media (max-width: 1600px) {
+    .container {
+        padding: 40px 60px;
+    }
+}
+
+/* ===== 1280px ===== */
+@media (max-width: 1280px) {
+    .content-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== 1024px (планшет + мобильное меню) ===== */
+@media (max-width: 1024px) {
+
+    nav {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 768px (iPad) ===== */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        width: 160px;
+    }
+
+    .search {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* ===== 480px (телефон) ===== */
+@media (max-width: 480px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .highlight {
+        font-size: 16px;
+    }
+
+    .main-img {
+        height: auto;
+    }
+
+    .pdf span {
+        font-size: 14px;
+    }
+}

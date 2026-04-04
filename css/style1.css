@@ -10,7 +10,7 @@ body {
 
 /* HEADER */
 .header-tomato {
-    background: url('..//images/tomatofon.png') center/cover no-repeat;
+    background: url('..//images/cebyl1.jpg') center/cover no-repeat;
     color: white;
 }
 
@@ -121,4 +121,19 @@ body {
 .socials img {
     height: 25px;
     margin: 5px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item-title {
+    color: #2e7d32;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.item-text {
+    font-size: 14px;
+    color: #666;
 }

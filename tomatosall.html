@@ -2,19 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tomato All</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Наши стили -->
-    <link rel="stylesheet" href="css/style1.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/middle.css">
-    <link rel="stylesheet" href="css/footer.css">
+<title>Green Onion Products</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/middle.css">
+<link rel="stylesheet" href="css/footer.css">
+
+<!-- ✅ VUE -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="js/main.js"></script>
 </head>
 
 <body>
+
+<!-- ВАЖНО: ОБЕРНУЛИ ВСЁ В app -->
+<div id="app">
 
 <!-- HEADER -->
 <header class="header-tomato">
@@ -37,7 +45,7 @@
     </div>
 
     <div class="header-content">
-        <h1>Agridera Fresh Market Tomato Hybrids</h1>
+        <h1>Green Onion Products</h1>
     </div>
 
 </header>
@@ -50,21 +58,17 @@
 
         <div class="info-text">
             <p>
-            Agridera aims to be one of the world's leading companies in the breeding, production, and marketing of tomato seeds. 
-            We invest intensively in research and development to provide solutions to growers and consumers in numerous countries around the world.
+            We provide high-quality green onion products for global markets.
             </p>
 
             <p>
-            In particular, we breed improved disease-resistant cultivars adapted to different markets globally.
+            Our varieties are disease-resistant and suitable for different climates.
             </p>
 
             <p>
-            Currently, emphasis is placed on combining Tomato Yellow Leaf Curl Virus (TYLCV) and Tomato Spotted Wilt Virus (TSWV) resistances with other soil borne diseases into superior tomato breeding lines and hybrids.
+            Focus is placed on taste, freshness and long shelf life.
             </p>
-
-            <p>
-            In terms of horticultural traits, breeding is for earliness, different fruit sizes, firmness, red fruit color, flavor, crack resistance, shelf life.
-            </p>
+            
         </div>
 
     </div>
@@ -74,17 +78,27 @@
 <section class="tomatoes">
     <div class="container grid">
 
-        <div class="item"><img src="images/853.png"></div>
-        <div class="item"><img src="images/855.png"></div>
-        <div class="item"><a href="tomato-one.html"><img src="images/809.png"></a></div>
-        <div class="item"><img src="images/834.png"></div>
-        <div class="item"><img src="images/848.png"></div>
-        <div class="item"><img src="images/800.png"></div>
-        <div class="item"><img src="images/898.png"></div>
-        <div class="item"><img src="images/816.png"></div>
+    
+        <div class="item" v-for="item in products" :key="item.id">
+
+            <a :href="'tomato-one.html#' + item.id">
+                <img :src="item.image">
+            </a>
+        
+            <h4 class="item-title">
+                {{ item.title }}
+            </h4>
+        
+            <p class="item-text">
+                {{ item.short_text }}
+            </p>
+        
+        </div>
 
     </div>
 </section>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -117,10 +131,6 @@
     </div>
 
 </footer>
-<script>
-    document.querySelector('.menu-btn').onclick = function() {
-        document.querySelector('nav').style.display = 'block';
-    }
-</script>
+
 </body>
 </html>

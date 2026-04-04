@@ -1,6 +1,10 @@
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: 'RobotoSlab';
+    src: url('../fonts/RobotoSlab.ttf') format('truetype'),
+         url('../fonts/RobotoSlab.woff') format('woff');
+    font-weight: normal;
+    font-size: normal;
 }
 
 .container {
@@ -26,7 +30,7 @@ body {
 }
 
 .menu a {
-    color: white;
+    color: rgb(0, 0, 0);
     margin: 0 15px;
     text-decoration: none;
     font-size: 14px;

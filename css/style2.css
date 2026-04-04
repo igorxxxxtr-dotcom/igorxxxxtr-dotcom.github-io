@@ -5,7 +5,12 @@
 }
 
 body {
-    font-family: 'Roboto Slab';
+    margin: 0;
+    font-family: 'RobotoSlab';
+    src: url('../fonts/RobotoSlab.ttf') format('truetype'),
+         url('../fonts/RobotoSlab.woff') format('woff');
+    font-weight: normal;
+    font-size: normal;
 }
 
 body {

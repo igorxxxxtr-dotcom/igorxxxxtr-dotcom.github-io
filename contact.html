@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<style>
+body {
+    font-family: Arial;
+}
+
+.cart-table img {
+    border-radius: 5px;
+}
+
+.remove-btn {
+    cursor: pointer;
+    color: red;
+    font-size: 20px;
+}
+
+.form-block {
+    margin-top: 30px;
+}
+
+.success {
+    margin-top: 30px;
+    padding: 20px;
+    background: #e8f5e9;
+    border-left: 5px solid green;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="app" class="container">
+
+    <h1 class="mt-4">Contact Us</h1>
+
+    <!-- 🛒 CART -->
+    <div v-if="cart.length > 0" class="cart-table mt-4">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+
+            <tr v-for="item in cart" :key="item.id">
+                <td><img :src="item.image" width="70"></td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.short_text }}</td>
+                <td>
+                    <span class="remove-btn" @click="removeFromCart(item.id)">✖</span>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- 📩 FORM -->
+    <form v-if="!orderDone" @submit.prevent="makeOrder" class="form-block">
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name*" v-model="contactFields.name" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email*" v-model="contactFields.email" required>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Message*" v-model="contactFields.message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Send</button>
+
+    </form>
+
+    <!-- ✅ RESULT -->
+    <div v-if="orderDone" class="success">
+
+        <h3>Order sent!</h3>
+
+        <p><b>Name:</b> {{ contactFields.name }}</p>
+        <p><b>Email:</b> {{ contactFields.email }}</p>
+        <p><b>Message:</b> {{ contactFields.message }}</p>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+new Vue({
+    el: '#app',
+
+    data: {
+        products: [
+            { id: 1, title: "Onion Classic", short_text: "Свежий лук", image: "images/cebyl2.jpg" },
+            { id: 2, title: "Onion Fresh", short_text: "Сочный", image: "images/cebyl3.jpg" },
+            { id: 3, title: "Onion Premium", short_text: "Премиум", image: "images/cebyl4.jpg" }
+        ],
+
+        cart: [],
+
+        contactFields: {
+            name: "",
+            email: "",
+            message: ""
+        },
+
+        orderDone: false
+    },
+
+    methods: {
+
+        // 🛒 получить корзину
+        getCart() {
+            let ids = JSON.parse(localStorage.getItem('cart')) || [];
+
+            this.cart = this.products.filter(product =>
+                ids.includes(product.id)
+            );
+        },
+
+        // ❌ удалить товар
+        removeFromCart(id) {
+            let ids = JSON.parse(localStorage.getItem('cart')) || [];
+
+            ids = ids.filter(itemId => itemId !== id);
+
+            localStorage.setItem('cart', JSON.stringify(ids));
+
+            this.getCart();
+        },
+
+        // 📩 отправка формы
+        makeOrder() {
+            console.log("Order:", this.contactFields);
+
+            this.orderDone = true;
+
+            this.cart = [];
+            localStorage.removeItem('cart');
+        }
+    },
+
+    mounted() {
+        this.getCart();
+    }
+});
+</script>
+
+</body>
+</html>

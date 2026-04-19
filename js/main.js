@@ -19,44 +19,58 @@ new Vue({
     },
 
     methods: {
-        addToCart(id) {
-            let ids = JSON.parse(localStorage.getItem('cart')) || [];
-        
-            if (!ids.includes(id)) {
-                ids.push(id);
-            }
-        
-            localStorage.setItem('cart', JSON.stringify(ids));
-        },
-        // 🔥 получить корзину из localStorage
         getCart() {
-            let ids = JSON.parse(localStorage.getItem('cart')) || [];
-
-            this.cart = this.products.filter(product =>
-                ids.includes(product.id)
-            );
+            let stored = JSON.parse(localStorage.getItem('cart')) || [];
+        
+            this.cart = stored.map(cartItem => {
+                let product = this.products.find(p => p.id === cartItem.id);
+        
+                return {
+                    ...product,
+                    qty: cartItem.qty
+                };
+            });
         },
-
-        // ❌ удалить товар
-        removeFromCart(id) {
-            let ids = JSON.parse(localStorage.getItem('cart')) || [];
-
-            ids = ids.filter(itemId => itemId !== id);
-
-            localStorage.setItem('cart', JSON.stringify(ids));
-
-            this.getCart(); // обновить
+        increaseQty(item) {
+            if (!item.qty) item.qty = 1;
+            item.qty++;
         },
-
-        // 🛒 оформить заказ
-        makeOrder() {
-            console.log("Данные формы:", this.contactFields);
-
-            this.orderDone = true;
-
-            // очистка корзины
-            this.cart = [];
-            localStorage.removeItem('cart');
+    
+        decreaseQty(item) {
+            if (!item.qty) item.qty = 1;
+            if (item.qty > 1) item.qty--;
+        },
+    
+        addToCart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            let found = cart.find(p => p.id === item.id);
+    
+            if (found) {
+                found.qty += item.qty || 1;
+            } else {
+                cart.push({
+                    id: item.id,
+                    qty: item.qty || 1
+                });
+            }
+    
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            alert("Добавлено!");
+        }
+    },
+    watch: {
+        cart: {
+            handler(newCart) {
+                let updated = newCart.map(item => ({
+                    id: item.id,
+                    qty: item.qty
+                }));
+    
+                localStorage.setItem('cart', JSON.stringify(updated));
+            },
+            deep: true
         }
     },
 

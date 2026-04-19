@@ -15,8 +15,7 @@
 <link rel="stylesheet" href="css/footer.css">
 
 <!-- ✅ VUE -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-<script src="js/main.js"></script>
+
 </head>
 
 <body>
@@ -81,21 +80,31 @@
     
         <div class="item" v-for="item in products" :key="item.id">
 
-            <a :href="'tomato-one.html#' + item.id">
-                <img :src="item.image">
-            </a>
+            <img :src="item.image">
         
-            <h4 class="item-title">
-                {{ item.title }}
-            </h4>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.short_text }}</p>
         
-            <p class="item-text">
-                {{ item.short_text }}
-            </p>
+            <div class="d-flex align-items-center gap-2">
+        
+                <button @click="decreaseQty(item)" class="btn btn-secondary">-</button>
+        
+                <span>{{ item.qty || 1 }}</span>
+        
+                <button @click="increaseQty(item)" class="btn btn-secondary">+</button>
+        
+            </div>
+        
+            <button @click="addToCart(item)" class="btn btn-success mt-2">
+                Add to cart
+            </button>
         
         </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
 </section>
 
 </div>
@@ -131,6 +140,7 @@
     </div>
 
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

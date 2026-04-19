@@ -47,28 +47,37 @@ body {
     <h1 class="mt-4">Contact Us</h1>
 
     <!-- 🛒 CART -->
-    <div v-if="cart.length > 0" class="cart-table mt-4">
+    <!-- 🛒 CART TABLE -->
+<div v-if="cart.length > 0" class="container mt-4">
 
-        <table class="table table-bordered">
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th></th>
-            </tr>
+    <table class="table table-bordered">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Qty</th>
+            <th></th>
+        </tr>
 
-            <tr v-for="item in cart" :key="item.id">
-                <td><img :src="item.image" width="70"></td>
-                <td>{{ item.title }}</td>
-                <td>{{ item.short_text }}</td>
-                <td>
-                    <span class="remove-btn" @click="removeFromCart(item.id)">✖</span>
-                </td>
-            </tr>
+        <tr v-for="item in cart" :key="item.id">
+            <td><img :src="item.image" width="60"></td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.short_text }}</td>
 
-        </table>
+            <td>
+                <button @click="item.qty--" class="btn btn-sm btn-secondary">-</button>
+                {{ item.qty }}
+                <button @click="item.qty++" class="btn btn-sm btn-secondary">+</button>
+            </td>
 
-    </div>
+            <td>
+                <span @click="removeFromCart(item.id)" style="cursor:pointer; color:red;">✖</span>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
 
     <!-- 📩 FORM -->
     <form v-if="!orderDone" @submit.prevent="makeOrder" class="form-block">
@@ -104,65 +113,68 @@ body {
 
 <!-- JS -->
 <script>
-new Vue({
-    el: '#app',
-
-    data: {
-        products: [
-            { id: 1, title: "Onion Classic", short_text: "Свежий лук", image: "images/cebyl2.jpg" },
-            { id: 2, title: "Onion Fresh", short_text: "Сочный", image: "images/cebyl3.jpg" },
-            { id: 3, title: "Onion Premium", short_text: "Премиум", image: "images/cebyl4.jpg" }
-        ],
-
-        cart: [],
-
-        contactFields: {
-            name: "",
-            email: "",
-            message: ""
+    new Vue({
+        el: '#app',
+    
+        data: {
+            products: [
+                { id: 1, title: "Onion Classic", short_text: "Свежий лук", image: "images/cebyl2.jpg" },
+                { id: 2, title: "Onion Fresh", short_text: "Сочный", image: "images/cebyl3.jpg" },
+                { id: 3, title: "Onion Premium", short_text: "Премиум", image: "images/cebyl4.jpg" }
+            ],
+    
+            cart: [],
+            contactFields: {
+                name: "",
+                email: "",
+                message: ""
+            },
+            orderDone: false
         },
+    
+        methods: {
+    
+            getCart() {
+    let stored = JSON.parse(localStorage.getItem('cart')) || [];
 
-        orderDone: false
-    },
+    this.cart = stored.map(cartItem => {
+        let product = this.products.find(p => p.id === cartItem.id);
 
-    methods: {
-
-        // 🛒 получить корзину
-        getCart() {
-            let ids = JSON.parse(localStorage.getItem('cart')) || [];
-
-            this.cart = this.products.filter(product =>
-                ids.includes(product.id)
-            );
+        return {
+            ...product,
+            qty: cartItem.qty
+        };
+    });
+},
+    
+            removeFromCart(id) {
+                let ids = JSON.parse(localStorage.getItem('cart')) || [];
+    
+                ids = ids.filter(i => i !== id);
+    
+                localStorage.setItem('cart', JSON.stringify(ids));
+    
+                this.getCart();
+            },
+    
+            makeOrder() {
+                this.orderDone = true;
+    
+                this.cart = [];
+                localStorage.removeItem('cart');
+            }
         },
-
-        // ❌ удалить товар
-        removeFromCart(id) {
-            let ids = JSON.parse(localStorage.getItem('cart')) || [];
-
-            ids = ids.filter(itemId => itemId !== id);
-
-            localStorage.setItem('cart', JSON.stringify(ids));
-
+    
+        mounted() {
+            // 🔥 ВАЖНО: чтобы сразу были товары
+            if (!localStorage.getItem('cart')) {
+                localStorage.setItem('cart', JSON.stringify([1,2,3]));
+            }
+    
             this.getCart();
-        },
-
-        // 📩 отправка формы
-        makeOrder() {
-            console.log("Order:", this.contactFields);
-
-            this.orderDone = true;
-
-            this.cart = [];
-            localStorage.removeItem('cart');
         }
-    },
-
-    mounted() {
-        this.getCart();
-    }
-});
-</script>
+    });
+    </script>
 
 </body>
 </html>

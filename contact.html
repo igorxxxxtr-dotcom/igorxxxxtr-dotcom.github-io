@@ -36,6 +36,56 @@ body {
     background: #e8f5e9;
     border-left: 5px solid green;
 }
+/* 📱 МОБИЛКА */
+
+@media (max-width: 768px) {
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* таблица */
+table th, table td {
+    font-size: 12px;
+    padding: 6px;
+}
+
+/* кнопки */
+.btn {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* форма */
+.form-control {
+    font-size: 14px;
+}
+
+/* картинки */
+.cart-table img,
+table img {
+    width: 40px !important;
+}
+}
+
+/* 📱 очень маленькие экраны */
+
+@media (max-width: 480px) {
+
+table th:nth-child(3),
+table td:nth-child(3) {
+    display: none; /* скрываем описание */
+}
+
+table th {
+    font-size: 10px;
+}
+
+table td {
+    font-size: 10px;
+}
+}
 </style>
 
 </head>
@@ -48,9 +98,10 @@ body {
 
     <!-- 🛒 CART -->
     <!-- 🛒 CART TABLE -->
-<div v-if="cart.length > 0" class="container mt-4">
+    <div v-if="cart.length > 0" class="container mt-4">
+        <div class="table-responsive">
 
-    <table class="table table-bordered">
+            <table class="table table-bordered cart-table">
         <tr>
             <th>Image</th>
             <th>Name</th>
@@ -65,18 +116,19 @@ body {
             <td>{{ item.short_text }}</td>
 
             <td>
-                <button @click="item.qty--" class="btn btn-sm btn-secondary">-</button>
-                {{ item.qty }}
-                <button @click="item.qty++" class="btn btn-sm btn-secondary">+</button>
+                <div class="d-flex align-items-center justify-content-center">
+                    <button @click="item.qty--" class="btn btn-sm btn-secondary">-</button>
+                    <span class="mx-2">{{ item.qty }}</span>
+                    <button @click="item.qty++" class="btn btn-sm btn-secondary">+</button>
+                </div>
             </td>
-
             <td>
                 <span @click="removeFromCart(item.id)" style="cursor:pointer; color:red;">✖</span>
             </td>
         </tr>
 
     </table>
-
+</div>
 </div>
 
     <!-- 📩 FORM -->

@@ -17,7 +17,17 @@ body {
     background: url('..//images/cebyl1.jpg') center/cover no-repeat;
     color: white;
 }
+@media (max-width: 576px) {
+    .header-tomato {
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
 
+    .header-tomato h1 {
+        font-size: 22px;
+    }
+}
 .top-bar {
     display: flex;
     align-items: center;
@@ -28,7 +38,17 @@ body {
 .logo {
     height: 50px;
 }
+@media (max-width: 768px) {
+    .menu {
+        display: block;
+        text-align: center;
+    }
 
+    .menu a {
+        display: block;
+        margin: 10px 0;
+    }
+}
 .menu a {
     color: rgb(0, 0, 0);
     margin: 0 15px;
@@ -84,7 +104,21 @@ body {
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    gap: 20px;
+}
+
+/* 📱 планшет */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 📱 телефон */
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .item {
@@ -92,7 +126,8 @@ body {
 }
 
 .item img {
-    width: 160px;
+    width: 100%;
+    height: auto;
 }
 
 .item span {

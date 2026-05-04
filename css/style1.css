@@ -1,56 +1,50 @@
-body {
-    margin: 0;
+/* 🔤 ШРИФТ (исправлено правильно через @font-face) */
+@font-face {
     font-family: 'RobotoSlab';
     src: url('../fonts/RobotoSlab.ttf') format('truetype'),
          url('../fonts/RobotoSlab.woff') format('woff');
     font-weight: normal;
-    font-size: normal;
+}
+
+/* БАЗА */
+body {
+    margin: 0;
+    font-family: 'RobotoSlab', serif;
 }
 
 .container {
-    width: 1100px;
+    max-width: 1100px;
+    width: 100%;
     margin: auto;
+    padding: 0 15px;
 }
 
-/* HEADER */
+/* 🔥 HEADER */
 .header-tomato {
-    background: url('..//images/cebyl1.jpg') center/cover no-repeat;
+    background: url('../images/cebyl1.jpg') center/cover no-repeat;
     color: white;
 }
-@media (max-width: 576px) {
-    .header-tomato {
-        height: auto;
-        padding: 40px 20px;
-        text-align: center;
-    }
 
-    .header-tomato h1 {
-        font-size: 22px;
-    }
-}
 .top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
+    flex-wrap: wrap;
 }
 
 .logo {
     height: 50px;
 }
-@media (max-width: 768px) {
-    .menu {
-        display: block;
-        text-align: center;
-    }
 
-    .menu a {
-        display: block;
-        margin: 10px 0;
-    }
+/* МЕНЮ */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
 }
+
 .menu a {
-    color: rgb(0, 0, 0);
+    color: black;
     margin: 0 15px;
     text-decoration: none;
     font-size: 14px;
@@ -60,6 +54,7 @@ body {
     border-bottom: 2px solid white;
 }
 
+/* ПОИСК */
 .search input {
     padding: 6px 10px;
     border: none;
@@ -72,7 +67,7 @@ body {
 
 .header-content h1 {
     font-size: 32px;
-    width: 500px;
+    max-width: 500px;
 }
 
 /* INFO */
@@ -96,7 +91,7 @@ body {
     color: #444;
 }
 
-/* GRID */
+/* 🔥 GRID */
 .tomatoes {
     padding-bottom: 60px;
 }
@@ -107,36 +102,32 @@ body {
     gap: 20px;
 }
 
-/* 📱 планшет */
-@media (max-width: 992px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* 📱 телефон */
-@media (max-width: 576px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* КАРТОЧКА */
 .item {
     text-align: center;
+    padding: 10px;
+    background: #fff;
 }
 
 .item img {
     width: 100%;
-    height: auto;
+    height: 180px;          /* фикс высоты */
+    object-fit: cover;      /* аккуратно обрезает */
+    border-radius: 6px;
 }
 
-.item span {
-    display: block;
+.item-title {
+    color: #2e7d32;
     margin-top: 10px;
-    font-weight: bold;
+    font-size: 18px;
 }
 
-/* FOOTER */
+.item-text {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 🔥 FOOTER */
 .footer-top {
     background: #444;
     padding: 20px 0;
@@ -162,17 +153,63 @@ body {
     margin: 5px;
 }
 
-.item {
-    text-align: center;
+/* 📱 АДАПТИВ */
+
+/* планшет */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.item-title {
-    color: #2e7d32;
-    margin-top: 10px;
-    font-size: 18px;
+/* телефон */
+@media (max-width: 768px) {
+
+    .top-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .search {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search input {
+        width: 100%;
+    }
+
+    .header-content h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .info-wrap {
+        flex-direction: column;
+    }
 }
 
-.item-text {
-    font-size: 14px;
-    color: #666;
+/* маленький телефон */
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item img {
+        height: 150px;
+    }
+
+    .header-content {
+        padding: 40px 20px;
+        text-align: center;
+    }
 }

@@ -11,7 +11,11 @@ body {
     margin: 0;
     font-family: 'RobotoSlab', serif;
 }
-
+.header {
+    background: url('../images/cebyl1.jpg') center/cover no-repeat;
+    min-height: 300px;
+    color: white;
+}
 .container {
     max-width: 1100px;
     width: 100%;
@@ -31,6 +35,15 @@ body {
     justify-content: space-between;
     padding: 20px 0;
     flex-wrap: wrap;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-link:hover {
+    opacity: 0.9;
 }
 
 .logo {

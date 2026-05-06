@@ -9,7 +9,13 @@ body {
 .navbar-brand {
     font-weight: bold;
 }
+.navbar-toggler {
+    border-color: white;
+}
 
+.navbar-toggler-icon {
+    background-image: url("https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/img/navbar-toggler-icon.svg");
+}
 .navbar-nav .nav-link {
     margin-left: 15px;
 }

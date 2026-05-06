@@ -3,9 +3,27 @@ new Vue({
 
     data: {
         products: [
-            { id: 1, title: "Onion Classic", short_text: "Свежий лук", image: "images/cebyl2.jpg" },
-            { id: 2, title: "Onion Fresh", short_text: "Сочный", image: "images/cebyl3.jpg" },
-            { id: 3, title: "Onion Premium", short_text: "Премиум", image: "images/cebyl4.jpg" }
+            { 
+                id: 1, 
+                title: "Onion Classic", 
+                short_text: "Свежий лук", 
+                image: "images/cebyl2.jpg",
+                link: "onion-classic.html"
+            },
+            { 
+                id: 2, 
+                title: "Onion Fresh", 
+                short_text: "Сочный", 
+                image: "images/cebyl3.jpg",
+                link: "onion-fresh.html"
+            },
+            { 
+                id: 3, 
+                title: "Onion Premium", 
+                short_text: "Премиум", 
+                image: "images/cebyl4.jpg",
+                link: "onion-prem.html"
+            }
         ],
 
         cart: [],

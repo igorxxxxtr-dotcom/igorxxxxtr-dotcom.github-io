@@ -188,7 +188,10 @@ body {
     .header-content h1 {
         font-size: 24px;
     }
-
+    img {
+        max-width: 100%;
+        height: auto;
+    }
     .menu {
         display: block;
         text-align: center;
